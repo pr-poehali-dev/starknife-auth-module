@@ -152,16 +152,16 @@ export default function Index() {
           </Card>
         </div>
 
-        <Card className="glass rounded-xl p-6 fixed bottom-8 left-1/2 -translate-x-1/2 w-80 text-center animate-fade-in">
-          <h3 className="font-heading font-semibold text-gray-700 mb-2 flex items-center justify-center gap-2">
+        <Card className="rounded-xl p-6 fixed bottom-8 left-1/2 -translate-x-1/2 w-80 text-center animate-fade-in bg-gray-900/30 backdrop-blur-lg border border-white/10 shadow-2xl">
+          <h3 className="font-heading font-semibold text-white mb-2 flex items-center justify-center gap-2">
             Innovation <span>✨</span>
           </h3>
-          <p className="text-sm text-gray-600 mb-4">Try the dark theme</p>
+          <p className="text-sm text-gray-200 mb-4">Try the dark theme</p>
           <div className="flex gap-3 justify-center">
-            <Button variant="default" className="bg-gray-800 hover:bg-gray-900">
+            <Button variant="default" className="bg-white text-gray-900 hover:bg-gray-100">
               Accept
             </Button>
-            <Button variant="outline" className="bg-white hover:bg-gray-50">
+            <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
               Dismiss
             </Button>
           </div>
