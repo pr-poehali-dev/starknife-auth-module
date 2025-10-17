@@ -17,6 +17,12 @@ export default function Index() {
   const [userBio, setUserBio] = useState('UX/UI дизайнер, 5 лет опыта');
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [showInnovation, setShowInnovation] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const handleAcceptDarkTheme = () => {
+    setIsDarkTheme(true);
+    setShowInnovation(false);
+  };
 
   const services = [
     { id: 1, title: 'Дизайн сайтов', provider: 'Мария К.', rating: 4.9, price: '15 000 ₽', category: 'Дизайн', image: '🎨' },
@@ -53,15 +59,15 @@ export default function Index() {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png)' }}>
+      <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat transition-all duration-700" style={{ backgroundImage: `url(${isDarkTheme ? 'https://cdn.poehali.dev/files/887ee72c-009b-4fcc-82a1-d781a8988269.png' : 'https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png'})` }}>
         <div className="flex flex-col lg:flex-row gap-6 max-w-5xl w-full animate-fade-in">
           <Card className="glass rounded-xl p-8 w-full lg:w-96 animate-scale-in">
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl font-heading font-semibold text-gray-700">StarKnife</h1>
+              <h1 className={`text-2xl font-heading font-semibold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-700'}`}>StarKnife</h1>
               <div className="flex gap-2">
                 <button
                   onClick={() => setActiveTab('login')}
-                  className={`text-sm px-3 py-1 transition-all ${
+                  className={`text-sm px-3 py-1 transition-all duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-700'} ${
                     activeTab === 'login' ? 'font-semibold opacity-100' : 'opacity-50'
                   }`}
                 >
@@ -69,7 +75,7 @@ export default function Index() {
                 </button>
                 <button
                   onClick={() => setActiveTab('signup')}
-                  className={`text-sm px-3 py-1 transition-all ${
+                  className={`text-sm px-3 py-1 transition-all duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-700'} ${
                     activeTab === 'signup' ? 'font-semibold opacity-100' : 'opacity-50'
                   }`}
                 >
@@ -91,32 +97,32 @@ export default function Index() {
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="glass-input rounded-lg flex items-center px-3 py-2">
-                <Icon name="Mail" size={18} className="text-gray-600 mr-2" />
+                <Icon name="Mail" size={18} className={`mr-2 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`} />
                 <Input
                   type="email"
                   placeholder="e-mail address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-0 bg-transparent shadow-none focus-visible:ring-0 p-0 h-auto"
+                  className={`border-0 bg-transparent shadow-none focus-visible:ring-0 p-0 h-auto transition-colors duration-700 ${isDarkTheme ? 'text-white placeholder:text-gray-400' : 'text-gray-900 placeholder:text-gray-500'}`}
                 />
               </div>
 
               <div className="glass-input rounded-lg flex items-center px-3 py-2">
-                <Icon name="Key" size={18} className="text-gray-600 mr-2" />
+                <Icon name="Key" size={18} className={`mr-2 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`} />
                 <Input
                   type="password"
                   placeholder="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="border-0 bg-transparent shadow-none focus-visible:ring-0 p-0 h-auto flex-1"
+                  className={`border-0 bg-transparent shadow-none focus-visible:ring-0 p-0 h-auto flex-1 transition-colors duration-700 ${isDarkTheme ? 'text-white placeholder:text-gray-400' : 'text-gray-900 placeholder:text-gray-500'}`}
                 />
-                <a href="#" className="text-xs text-gray-600 opacity-70 ml-2 hover:opacity-100">
+                <a href="#" className={`text-xs opacity-70 ml-2 hover:opacity-100 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
                   I forgot
                 </a>
               </div>
 
               <div className="flex items-center justify-between gap-3 mt-6">
-                <p className="text-xs text-gray-600 leading-tight">
+                <p className={`text-xs leading-tight transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
                   By registering, you agree to the processing of your personal data.
                 </p>
                 <Button type="submit" size="sm" className="bg-gray-800 hover:bg-gray-900 shrink-0">
@@ -125,7 +131,7 @@ export default function Index() {
               </div>
             </form>
 
-            <a href="#" className="text-xs text-gray-600 opacity-70 mt-3 inline-block hover:opacity-100">
+            <a href="#" className={`text-xs opacity-70 mt-3 inline-block hover:opacity-100 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
               Click here to more info
             </a>
           </Card>
@@ -133,11 +139,11 @@ export default function Index() {
           <div className="flex flex-col gap-6 w-full lg:w-80">
             <Card className="glass rounded-xl p-8 relative overflow-hidden">
             <div className="font-heading">
-              <div className="text-5xl font-bold text-gray-700 leading-none">October</div>
-              <div className="text-3xl font-bold text-gray-600 opacity-70 mt-1">2025</div>
+              <div className={`text-5xl font-bold leading-none transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-700'}`}>October</div>
+              <div className={`text-3xl font-bold opacity-70 mt-1 transition-colors duration-700 ${isDarkTheme ? 'text-gray-200' : 'text-gray-600'}`}>2025</div>
             </div>
 
-            <div className="mt-12 text-sm text-gray-600 space-y-1">
+            <div className={`mt-12 text-sm space-y-1 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
               <p>Monday 17</p>
               <p>October 2025</p>
               <p className="opacity-60">Typography</p>
@@ -145,7 +151,7 @@ export default function Index() {
 
             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-40 h-40 bg-pink-300 opacity-30 rounded-full blur-xl"></div>
 
-            <div className="absolute bottom-4 left-4 text-xs text-gray-600 opacity-60">
+            <div className={`absolute bottom-4 left-4 text-xs opacity-60 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
               StarKnife.Ru
             </div>
             <Button size="sm" className="absolute bottom-4 right-4 bg-white text-gray-800 hover:bg-gray-100">
@@ -160,7 +166,7 @@ export default function Index() {
               </h3>
               <p className="text-sm text-gray-200 mb-4">Try the dark theme</p>
               <div className="flex gap-3 justify-center">
-                <Button variant="default" className="bg-white text-gray-900 hover:bg-gray-100">
+                <Button onClick={handleAcceptDarkTheme} variant="default" className="bg-white text-gray-900 hover:bg-gray-100">
                   Accept
                 </Button>
                 <Button onClick={() => setShowInnovation(false)} variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
@@ -176,19 +182,19 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png)' }}>
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat transition-all duration-700" style={{ backgroundImage: `url(${isDarkTheme ? 'https://cdn.poehali.dev/files/887ee72c-009b-4fcc-82a1-d781a8988269.png' : 'https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png'})` }}>
       <nav className="glass border-b border-white/40 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-heading font-semibold text-gray-700">StarKnife</h1>
+          <h1 className={`text-2xl font-heading font-semibold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-700'}`}>StarKnife</h1>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-gray-700">
+            <Button variant="ghost" className={`transition-colors duration-700 ${isDarkTheme ? 'text-white hover:bg-white/10' : 'text-gray-700'}`}>
               <Icon name="Search" size={20} />
             </Button>
-            <Button variant="ghost" className="text-gray-700">
+            <Button variant="ghost" className={`transition-colors duration-700 ${isDarkTheme ? 'text-white hover:bg-white/10' : 'text-gray-700'}`}>
               <Icon name="Bell" size={20} />
             </Button>
             <Avatar className="cursor-pointer" onClick={() => setShowProfile(!showProfile)}>
-              <AvatarFallback className="bg-primary/20 text-gray-700 font-semibold">
+              <AvatarFallback className={`font-semibold transition-colors duration-700 ${isDarkTheme ? 'bg-white/20 text-white' : 'bg-primary/20 text-gray-700'}`}>
                 {userName.split(' ').map(n => n[0]).join('')}
               </AvatarFallback>
             </Avatar>
@@ -202,13 +208,13 @@ export default function Index() {
             <div className="flex justify-between items-start mb-6">
               <div className="flex items-center gap-4">
                 <Avatar className="w-20 h-20">
-                  <AvatarFallback className="bg-primary/30 text-gray-700 text-2xl font-semibold">
+                  <AvatarFallback className={`text-2xl font-semibold transition-colors duration-700 ${isDarkTheme ? 'bg-white/20 text-white' : 'bg-primary/30 text-gray-700'}`}>
                     {userName.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h2 className="text-2xl font-heading font-semibold text-gray-800">{userName}</h2>
-                  <p className="text-gray-600">{userEmail}</p>
+                  <h2 className={`text-2xl font-heading font-semibold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{userName}</h2>
+                  <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>{userEmail}</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -231,7 +237,7 @@ export default function Index() {
 
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-2 block">Имя</label>
+                <label className={`text-sm font-semibold mb-2 block transition-colors duration-700 ${isDarkTheme ? 'text-gray-200' : 'text-gray-700'}`}>Имя</label>
                 {isEditingProfile ? (
                   <Input
                     value={userName}
@@ -239,12 +245,12 @@ export default function Index() {
                     className="glass-input"
                   />
                 ) : (
-                  <p className="text-gray-800">{userName}</p>
+                  <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{userName}</p>
                 )}
               </div>
 
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-2 block">Email</label>
+                <label className={`text-sm font-semibold mb-2 block transition-colors duration-700 ${isDarkTheme ? 'text-gray-200' : 'text-gray-700'}`}>Email</label>
                 {isEditingProfile ? (
                   <Input
                     value={userEmail}
@@ -252,12 +258,12 @@ export default function Index() {
                     className="glass-input"
                   />
                 ) : (
-                  <p className="text-gray-800">{userEmail}</p>
+                  <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{userEmail}</p>
                 )}
               </div>
 
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-2 block">О себе</label>
+                <label className={`text-sm font-semibold mb-2 block transition-colors duration-700 ${isDarkTheme ? 'text-gray-200' : 'text-gray-700'}`}>О себе</label>
                 {isEditingProfile ? (
                   <Input
                     value={userBio}
@@ -265,7 +271,7 @@ export default function Index() {
                     className="glass-input"
                   />
                 ) : (
-                  <p className="text-gray-800">{userBio}</p>
+                  <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{userBio}</p>
                 )}
               </div>
             </div>
@@ -283,8 +289,8 @@ export default function Index() {
       ) : (
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="mb-8 animate-fade-in">
-            <h2 className="text-3xl font-heading font-bold text-gray-800 mb-2">Популярные услуги</h2>
-            <p className="text-gray-600">Найдите профессионалов для вашего проекта</p>
+            <h2 className={`text-3xl font-heading font-bold mb-2 transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>Популярные услуги</h2>
+            <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Найдите профессионалов для вашего проекта</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -299,17 +305,17 @@ export default function Index() {
                   <Badge variant="secondary" className="mb-2 bg-white/60">
                     {service.category}
                   </Badge>
-                  <h3 className="font-heading font-semibold text-lg text-gray-800">
+                  <h3 className={`font-heading font-semibold text-lg transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mt-1">от {service.provider}</p>
+                  <p className={`text-sm mt-1 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>от {service.provider}</p>
                 </div>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                   <div className="flex items-center gap-1 text-sm">
                     <Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
-                    <span className="font-semibold text-gray-800">{service.rating}</span>
+                    <span className={`font-semibold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{service.rating}</span>
                   </div>
-                  <div className="font-heading font-bold text-gray-800">{service.price}</div>
+                  <div className={`font-heading font-bold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{service.price}</div>
                 </div>
               </Card>
             ))}
