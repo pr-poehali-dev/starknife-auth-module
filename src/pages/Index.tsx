@@ -52,7 +52,7 @@ export default function Index() {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#fcd5e0] via-[#e8c5f0] to-[#a4bfe8]">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png)' }}>
         <div className="flex flex-col lg:flex-row gap-6 max-w-4xl w-full animate-fade-in">
           <Card className="glass rounded-xl p-8 w-full lg:w-96 animate-scale-in">
             <div className="flex justify-between items-center mb-6">
@@ -171,7 +171,7 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fcd5e0] via-[#e8c5f0] to-[#a4bfe8]">
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png)' }}>
       <nav className="glass border-b border-white/40 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-heading font-semibold text-gray-700">StarKnife</h1>
