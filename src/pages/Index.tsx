@@ -16,6 +16,7 @@ export default function Index() {
   const [userEmail, setUserEmail] = useState('alex@starknife.ru');
   const [userBio, setUserBio] = useState('UX/UI дизайнер, 5 лет опыта');
   const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [showInnovation, setShowInnovation] = useState(true);
 
   const services = [
     { id: 1, title: 'Дизайн сайтов', provider: 'Мария К.', rating: 4.9, price: '15 000 ₽', category: 'Дизайн', image: '🎨' },
@@ -53,7 +54,7 @@ export default function Index() {
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/e9a8d5d7-2185-45ab-970e-749a30cedbd7.png)' }}>
-        <div className="flex flex-col lg:flex-row gap-6 max-w-4xl w-full animate-fade-in">
+        <div className="flex flex-col lg:flex-row gap-6 max-w-5xl w-full animate-fade-in">
           <Card className="glass rounded-xl p-8 w-full lg:w-96 animate-scale-in">
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-2xl font-heading font-semibold text-gray-700">StarKnife</h1>
@@ -129,7 +130,8 @@ export default function Index() {
             </a>
           </Card>
 
-          <Card className="glass rounded-xl p-8 w-full lg:w-64 relative overflow-hidden">
+          <div className="flex flex-col gap-6 w-full lg:w-80">
+            <Card className="glass rounded-xl p-8 relative overflow-hidden">
             <div className="font-heading">
               <div className="text-5xl font-bold text-gray-700 leading-none">October</div>
               <div className="text-3xl font-bold text-gray-600 opacity-70 mt-1">2025</div>
@@ -150,22 +152,25 @@ export default function Index() {
               Click Here <Icon name="ChevronRight" size={14} className="ml-1" />
             </Button>
           </Card>
-        </div>
 
-        <Card className="rounded-xl p-6 fixed bottom-8 left-1/2 -translate-x-1/2 w-80 text-center animate-fade-in bg-gray-900/30 backdrop-blur-lg border border-white/10 shadow-2xl">
-          <h3 className="font-heading font-semibold text-white mb-2 flex items-center justify-center gap-2">
-            Innovation <span>✨</span>
-          </h3>
-          <p className="text-sm text-gray-200 mb-4">Try the dark theme</p>
-          <div className="flex gap-3 justify-center">
-            <Button variant="default" className="bg-white text-gray-900 hover:bg-gray-100">
-              Accept
-            </Button>
-            <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
-              Dismiss
-            </Button>
-          </div>
-        </Card>
+          {showInnovation && (
+            <Card className="rounded-xl p-6 text-center animate-fade-in bg-gray-900/30 backdrop-blur-lg border border-white/10 shadow-2xl">
+              <h3 className="font-heading font-semibold text-white mb-2 flex items-center justify-center gap-2">
+                Innovation <span>✨</span>
+              </h3>
+              <p className="text-sm text-gray-200 mb-4">Try the dark theme</p>
+              <div className="flex gap-3 justify-center">
+                <Button variant="default" className="bg-white text-gray-900 hover:bg-gray-100">
+                  Accept
+                </Button>
+                <Button onClick={() => setShowInnovation(false)} variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
+                  Dismiss
+                </Button>
+              </div>
+            </Card>
+          )}
+        </div>
+        </div>
       </div>
     );
   }
