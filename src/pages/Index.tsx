@@ -289,8 +289,9 @@ export default function Index() {
       ) : (
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="mb-8 animate-fade-in">
-            <h2 className={`text-3xl font-heading font-bold mb-2 transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>Популярные услуги</h2>
-            <p className={`transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Найдите профессионалов для вашего проекта</p>
+            <h2 className={`text-3xl font-heading font-bold mb-2 transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'} flex items-center gap-2`}>
+              Пользуется спросом ✨
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
