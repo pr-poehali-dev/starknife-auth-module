@@ -298,25 +298,43 @@ export default function Index() {
             {services.map((service, index) => (
               <Card
                 key={service.id}
-                className="glass rounded-xl p-6 hover:scale-105 transition-transform cursor-pointer animate-fade-in"
+                className={`glass rounded-xl p-6 hover:scale-105 transition-transform cursor-pointer animate-fade-in ${
+                  service.id === 1 ? 'bg-purple-500/20 border-purple-400/50' : ''
+                }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-5xl mb-4">{service.image}</div>
                 <div className="mb-3">
-                  <Badge variant="secondary" className="mb-2 bg-white/60">
+                  <Badge variant="secondary" className={`mb-2 ${service.id === 1 ? 'bg-purple-500/40 text-purple-100' : 'bg-white/60'}`}>
                     {service.category}
                   </Badge>
-                  <h3 className={`font-heading font-semibold text-lg transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-heading font-semibold text-lg transition-colors duration-700 ${
+                    service.id === 1 
+                      ? 'text-purple-100' 
+                      : isDarkTheme ? 'text-white' : 'text-gray-800'
+                  }`}>
                     {service.title}
                   </h3>
-                  <p className={`text-sm mt-1 transition-colors duration-700 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>от {service.provider}</p>
+                  <p className={`text-sm mt-1 transition-colors duration-700 ${
+                    service.id === 1
+                      ? 'text-purple-200'
+                      : isDarkTheme ? 'text-gray-300' : 'text-gray-600'
+                  }`}>от {service.provider}</p>
                 </div>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                   <div className="flex items-center gap-1 text-sm">
                     <Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
-                    <span className={`font-semibold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{service.rating}</span>
+                    <span className={`font-semibold transition-colors duration-700 ${
+                      service.id === 1
+                        ? 'text-purple-100'
+                        : isDarkTheme ? 'text-white' : 'text-gray-800'
+                    }`}>{service.rating}</span>
                   </div>
-                  <div className={`font-heading font-bold transition-colors duration-700 ${isDarkTheme ? 'text-white' : 'text-gray-800'}`}>{service.price}</div>
+                  <div className={`font-heading font-bold transition-colors duration-700 ${
+                    service.id === 1
+                      ? 'text-purple-100'
+                      : isDarkTheme ? 'text-white' : 'text-gray-800'
+                  }`}>{service.price}</div>
                 </div>
               </Card>
             ))}
