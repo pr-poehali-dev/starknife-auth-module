@@ -25,7 +25,7 @@ export default function Index() {
   };
 
   const services = [
-    { id: 1, title: 'Дизайн сайтов', provider: 'Мария К.', rating: 4.9, price: '15 000 ₽', category: 'Дизайн', image: '🎨' },
+    { id: 1, title: 'Сапфир Кейс', provider: 'Мария К.', rating: 4.9, price: '15 000 ₽', category: 'Дизайн', image: '💼' },
     { id: 2, title: 'Разработка React', provider: 'Иван П.', rating: 5.0, price: '25 000 ₽', category: 'Разработка', image: '⚛️' },
     { id: 3, title: 'SEO продвижение', provider: 'Ольга С.', rating: 4.8, price: '20 000 ₽', category: 'Маркетинг', image: '📈' },
     { id: 4, title: 'Копирайтинг', provider: 'Дмитрий Л.', rating: 4.7, price: '8 000 ₽', category: 'Контент', image: '✍️' },
