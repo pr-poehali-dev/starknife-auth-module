@@ -36,10 +36,10 @@ const Auth = () => {
         >
           <header className="flex justify-between items-center mb-[25px]">
             <div 
-              className="font-medium text-2xl tracking-wide"
+              className="font-medium text-2xl tracking-wide flex items-center gap-2"
               style={{ color: 'rgba(0, 0, 0, 0.6)' }}
             >
-              StarKnife
+              <span>⭐</span> StarKnife
             </div>
             <div className="flex">
               <button
